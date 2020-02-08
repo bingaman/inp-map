@@ -35,6 +35,7 @@
       'type': 'geojson',
       'data': 'https://raw.githubusercontent.com/bingaman/inp-map/master/inp-clean.geojson'
       });
+
 			map.addLayer({
 			  'id': 'inp-layer',
 			  'type': 'fill',
@@ -44,18 +45,11 @@
 			    'fill-outline-color': 'rgba(200, 100, 240, 1)'
 			  }
 			});
-      map.on('click', function(e) {
-        var features = map.queryRenderedFeatures(e.point, {
-          layers: ['inp-layer']
-        });
-      
-        if (!features.length) { return; }
-      
-        var feature = features[0];
-      
+
+      map.on('click','inp-layer', function(e) {
         var popup = new mapboxgl.Popup({ offset: [0, -15] })
-          .setLngLat(feature.geometry.coordinates)
-          .setHTML('<h3>' + feature.properties.managed_ar+ '</h3>')
+          .setLngLat(e.lngLat)
+          .setHTML('<h3>' + e.features[0].properties.managed_ar+ '</h3>')
           .addTo(map);
       });
 
