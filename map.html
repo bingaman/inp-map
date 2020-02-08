@@ -31,7 +31,7 @@
       zoom: 6
     });
   map.on('click', function(e) {
-    var features = map.queryRenderedFeatures(e.fill, {
+    var features = map.queryRenderedFeatures(e.point, {
       layers: ['inps']
     });
   
