@@ -30,22 +30,43 @@
       center: [-89.503639,39.739306],
       zoom: 6
     });
-  map.on('click', function(e) {
-    var features = map.queryRenderedFeatures(e.point, {
-      layers: ['inps']
+    map.on('load', function() {
+      map.addSource('inp', {
+      'type': 'geojson',
+      'data': 'https://raw.githubusercontent.com/bingaman/inp-map/master/inp-clean.geojson'
+      });
+			map.addLayer({
+			  'id': 'inp-layer',
+			  'type': 'fill',
+			  'source': 'inp',
+			  'paint': {
+			    'fill-color': 'rgba(200, 100, 240, 0.4)',
+			    'fill-outline-color': 'rgba(200, 100, 240, 1)'
+			  }
+			});
+      map.on('click', function(e) {
+        var features = map.queryRenderedFeatures(e.point, {
+          layers: ['inp-layer']
+        });
+      
+        if (!features.length) { return; }
+      
+        var feature = features[0];
+      
+        var popup = new mapboxgl.Popup({ offset: [0, -15] })
+          .setLngLat(feature.geometry.coordinates)
+          .setHTML('<h3>' + feature.properties.managed_ar+ '</h3>')
+          .addTo(map);
+      });
+
+      map.on('mouseenter', 'inp-layer', function() {
+				map.getCanvas().style.cursor = 'pointer';
+			});
+				 
+		  map.on('mouseleave', 'inp-layer', function() {
+				map.getCanvas().style.cursor = '';
+			});
     });
-  
-    if (!features.length) {
-      return;
-    }
-  
-    var feature = features[0];
-  
-    var popup = new mapboxgl.Popup({ offset: [0, -15] })
-      .setLngLat(feature.geometry.coordinates)
-      .setHTML('<h3>' + feature.properties.managed_ar+ '</h3>')
-      .addTo(map);
-  });
     </script>
   </body>
 </html>
