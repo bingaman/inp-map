@@ -62,15 +62,6 @@
     });
 
     map.on('load', function() {
-      map.addSource('inp', {
-        'type': 'geojson',
-        'data': 'https://raw.githubusercontent.com/bingaman/inp-map/master/inp-clean.geojson'
-      });
-
-      map.addSource('inp-centroids', {
-        'type': 'geojson',
-        'data': 'https://raw.githubusercontent.com/bingaman/inp-map/master/inp-centroids.geojson'
-      });
 
 /*      map.addSource('counties', {
         'type': 'geojson',
@@ -110,6 +101,16 @@
     }
 
     function addLayers(map) {
+      map.addSource('inp', {
+        'type': 'geojson',
+        'data': 'https://raw.githubusercontent.com/bingaman/inp-map/master/inp-clean.geojson'
+      });
+
+      map.addSource('inp-centroids', {
+        'type': 'geojson',
+        'data': 'https://raw.githubusercontent.com/bingaman/inp-map/master/inp-centroids.geojson'
+      });
+
 			map.addLayer({
 			  'id': 'inp-layer',
 			  'type': 'fill',
