@@ -23,17 +23,25 @@
   <body>
     <div id='map'></div>
     <script>
+    //using mapbox for now
     mapboxgl.accessToken = 'pk.eyJ1IjoidGFjbzIwMDAiLCJhIjoiY2phbHZmMmE3MnhsdzMzcnpjcHJ0bWJvdyJ9.iLGmtX1I1bzmKJ7-tP5txw';
     var map = new mapboxgl.Map({
       container: 'map',
+      // this could be changed to a default mapbox style
       style: 'mapbox://styles/taco2000/ck6abr2gq011w1irt3r39enm3',
       center: [-89.503639,39.739306],
       zoom: 6
     });
+
     map.on('load', function() {
       map.addSource('inp', {
-      'type': 'geojson',
-      'data': 'https://raw.githubusercontent.com/bingaman/inp-map/master/inp-clean.geojson'
+        'type': 'geojson',
+        'data': 'https://raw.githubusercontent.com/bingaman/inp-map/master/inp-clean.geojson'
+      });
+
+      map.addSource('inp-centroids', {
+        'type': 'geojson',
+        'data': 'https://raw.githubusercontent.com/bingaman/inp-map/master/inps-centroids.geojson'
       });
 
 			map.addLayer({
@@ -45,6 +53,25 @@
 			    'fill-outline-color': 'rgba(240, 168, 0, 1)'
 			  }
 			});
+
+			map.addLayer({
+			  'id': 'inp-centroids',
+			  'type': 'point',
+			  'source': 'inp-centroids',
+			  'paint': {
+			    'fill-color': 'rgba(255, 135, 15, 1)'
+			  }
+			});
+
+			map.setPaintProperty('inp-centroids', 'fill-opacity', [
+			'interpolate',
+			['linear'],
+			['zoom'],
+			5,
+			1,
+			11,
+			0
+			]);
 
       map.on('click','inp-layer', function(e) {
         var popup = new mapboxgl.Popup({ offset: [0, -15] })
