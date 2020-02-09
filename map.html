@@ -69,7 +69,6 @@
       });*/
       addLayers(map);
       
-			map.setPaintProperty('inp-centroid-layer', 'circle-opacity', ['interpolate', ['linear'], ['zoom'], 5, 1, 11, 0]);
 
       map.on('click','inp-layer', function(e) {
         var popup = new mapboxgl.Popup({ offset: [0, -15] })
@@ -129,6 +128,8 @@
 			    'circle-color': 'rgba(255, 135, 15, 1)'
 			  }
 			});
+
+			map.setPaintProperty('inp-centroid-layer', 'circle-opacity', ['interpolate', ['linear'], ['zoom'], 5, 1, 11, 0]);
     }
     
     for (var i = 0; i < inputs.length; i++) {
