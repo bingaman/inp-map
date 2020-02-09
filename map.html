@@ -28,7 +28,8 @@
     var map = new mapboxgl.Map({
       container: 'map',
       // this could be changed to a default mapbox style
-      style: 'mapbox://styles/taco2000/ck6abr2gq011w1irt3r39enm3',
+      //style: 'mapbox://styles/taco2000/ck6abr2gq011w1irt3r39enm3',
+      style: 'mapbox://styles/mapbox/light-v10',
       center: [-89.503639,39.739306],
       zoom: 6
     });
@@ -41,7 +42,7 @@
 
       map.addSource('inp-centroids', {
         'type': 'geojson',
-        'data': 'https://raw.githubusercontent.com/bingaman/inp-map/master/inps-centroids.geojson'
+        'data': 'https://raw.githubusercontent.com/bingaman/inp-map/master/inp-centroids.geojson'
       });
 
       map.addSource('counties', {
