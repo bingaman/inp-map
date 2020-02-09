@@ -10,7 +10,9 @@ Loading the shapes as geojson is a little slower than using a map style but allo
 
 Search is just a placeholder for now. More information could pop up into that sidebar.
 
-Mapbox is definitely the smoothest way to serve maps online but they start charging $3 per 1000 mapviews after the first 50,000. I think it would be fine for the Friends site. Mapbox also offers discounts for nonprofits https://www.mapbox.com/community/
+Mapbox is definitely the smoothest way to serve maps online but they start charging $3 per 1000 mapviews after the first 50,000. I don't think this would be a problem for the Friends site. Mapbox also offers discounts for nonprofits https://www.mapbox.com/community/
+
+Take whatever pieces you feel would be useful
 
 Todos:
 * Show labels at high zoom - while having them look good
