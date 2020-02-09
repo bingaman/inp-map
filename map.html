@@ -44,6 +44,11 @@
         'data': 'https://raw.githubusercontent.com/bingaman/inp-map/master/inps-centroids.geojson'
       });
 
+      map.addSource('counties', {
+        'type': 'geojson',
+        'data': 'https://raw.githubusercontent.com/bingaman/inp-map/master/counties.geojson'
+      });
+
 			map.addLayer({
 			  'id': 'inp-layer',
 			  'type': 'fill',
