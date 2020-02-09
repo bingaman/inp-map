@@ -61,7 +61,7 @@
 			});
 
 			map.addLayer({
-			  'id': 'inp-centroids',
+			  'id': 'inp-centroid-layer',
 			  'type': 'circle',
 			  'source': 'inp-centroids',
 			  'paint': {
@@ -69,7 +69,7 @@
 			  }
 			});
 
-			map.setPaintProperty('inp-centroids', 'fill-opacity', [
+			map.setPaintProperty('inp-centroid-layer', 'fill-opacity', [
 			'interpolate',
 			['linear'],
 			['zoom'],
