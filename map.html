@@ -72,30 +72,12 @@
         'data': 'https://raw.githubusercontent.com/bingaman/inp-map/master/inp-centroids.geojson'
       });
 
-      map.addSource('counties', {
+/*      map.addSource('counties', {
         'type': 'geojson',
         'data': 'https://raw.githubusercontent.com/bingaman/inp-map/master/counties.geojson'
-      });
-
-			map.addLayer({
-			  'id': 'inp-layer',
-			  'type': 'fill',
-			  'source': 'inp',
-			  'paint': {
-			    'fill-color': 'rgba(255, 200, 61, 1)',
-			    'fill-outline-color': 'rgba(240, 168, 0, 1)'
-			  }
-			});
-
-			map.addLayer({
-			  'id': 'inp-centroid-layer',
-			  'type': 'circle',
-			  'source': 'inp-centroids',
-			  'paint': {
-			    'circle-color': 'rgba(255, 135, 15, 1)'
-			  }
-			});
-
+      });*/
+      addLayers(map);
+      
 			map.setPaintProperty('inp-centroid-layer', 'circle-opacity', ['interpolate', ['linear'], ['zoom'], 5, 1, 11, 0]);
 
       map.on('click','inp-layer', function(e) {
@@ -120,11 +102,33 @@
     function switchLayer(layer) {
       var layerId = layer.target.id;
       map.setStyle('mapbox://styles/mapbox/' + layerId);
+      addLayers(map);
+    }
+
+    function addLayers(map) {
+			map.addLayer({
+			  'id': 'inp-layer',
+			  'type': 'fill',
+			  'source': 'inp',
+			  'paint': {
+			    'fill-color': 'rgba(255, 200, 61, 1)',
+			    'fill-outline-color': 'rgba(240, 168, 0, 1)'
+			  }
+			});
+
+			map.addLayer({
+			  'id': 'inp-centroid-layer',
+			  'type': 'circle',
+			  'source': 'inp-centroids',
+			  'paint': {
+			    'circle-color': 'rgba(255, 135, 15, 1)'
+			  }
+			});
     }
     
     for (var i = 0; i < inputs.length; i++) {
       inputs[i].onclick = switchLayer;
     }
     </script>
-  </bod>
+  </body>
 </html>
