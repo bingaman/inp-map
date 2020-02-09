@@ -52,10 +52,11 @@
      </div>
     </div>
     <script>
-    //using mapbox for now
+    //using personal access token for now
     mapboxgl.accessToken = 'pk.eyJ1IjoidGFjbzIwMDAiLCJhIjoiY2phbHZmMmE3MnhsdzMzcnpjcHJ0bWJvdyJ9.iLGmtX1I1bzmKJ7-tP5txw';
     var map = new mapboxgl.Map({
       container: 'map',
+      // could make a custom style - there are some things in here that are not necessary like airports
       style: 'mapbox://styles/mapbox/light-v10',
       center: [-89.503639,39.739306],
       zoom: 6
@@ -63,12 +64,7 @@
 
     map.on('load', function() {
 
-/*      map.addSource('counties', {
-        'type': 'geojson',
-        'data': 'https://raw.githubusercontent.com/bingaman/inp-map/master/counties.geojson'
-      });*/
       addLayers(map);
-      
 
       map.on('click','inp-layer', function(e) {
         var popup = new mapboxgl.Popup({ offset: [0, -15] })
