@@ -69,7 +69,7 @@
       map.on('click','inp-layer', function(e) {
         var popup = new mapboxgl.Popup({ offset: [0, -15] })
           .setLngLat(e.lngLat)
-          .setHTML('<h3>' + e.features[0].properties.managed_ar+ '</h3>')
+          .setHTML('<h3>' + e.features[0].properties.Site_Name+ '</h3>')
           .addTo(map);
       });
 
