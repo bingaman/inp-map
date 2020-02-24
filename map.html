@@ -105,8 +105,8 @@
         'type': 'geojson',
         'data': 'https://raw.githubusercontent.com/bingaman/inp-map/master/inp-update-centroids.geojson'
       });
-      console.log(map.getStyle());
-      if (map.getStyle() == 'mapbox://styles/mapbox/satellite-v9') {
+      console.log(map.getStyle().name);
+      if (map.getStyle().name == 'Mapbox Satellite') {
   			map.addLayer({
   			  'id': 'inp-layer',
   			  'type': 'fill',
