@@ -106,16 +106,28 @@
         'data': 'https://raw.githubusercontent.com/bingaman/inp-map/master/inp-update-centroids.geojson'
       });
 
-			map.addLayer({
-			  'id': 'inp-layer',
-			  'type': 'fill',
-			  'source': 'inp',
-			  'paint': {
-			    'fill-color': 'rgba(255, 200, 61, 1)',
-			    'fill-outline-color': 'rgba(240, 168, 0, 1)'
-			  }
-			});
-
+      if (map.getStyle() == 'mapbox://styles/mapbox/satellite-v9') {
+  			map.addLayer({
+  			  'id': 'inp-layer',
+  			  'type': 'fill',
+  			  'source': 'inp',
+  			  'paint': {
+  			    'fill-color': 'rgba(255, 200, 61, 0)',
+  			    'fill-outline-color': 'rgba(240, 168, 0, 1)'
+  			  }
+  			});
+      }
+      else {
+  			map.addLayer({
+  			  'id': 'inp-layer',
+  			  'type': 'fill',
+  			  'source': 'inp',
+  			  'paint': {
+  			    'fill-color': 'rgba(255, 200, 61, 1)',
+  			    'fill-outline-color': 'rgba(240, 168, 0, 1)'
+  			  }
+  			});
+      }
 			map.addLayer({
 			  'id': 'inp-centroid-layer',
 			  'type': 'circle',
